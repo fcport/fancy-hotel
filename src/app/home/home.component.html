@@ -5,7 +5,9 @@
     style="text-align: center"
   >
     <div>
-      <button mat-raised-button color="primary">Prenotazioni (temporaneo)</button>
+      <button mat-raised-button color="primary" (click)="loadReservations()">
+        Prenotazioni (temporaneo)
+      </button>
     </div>
     <div>
       <button mat-raised-button color="primary">Aggiungi prenotazione</button>
@@ -13,5 +15,6 @@
     <div>
       <button mat-raised-button color="primary">Check-out camera</button>
     </div>
+    <router-outlet></router-outlet>
   </div>
 </div>
