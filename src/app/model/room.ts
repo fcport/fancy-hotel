@@ -1,8 +1,8 @@
-import { Item } from "./item";
-import { reservation } from "./reservation";
+import { Item } from './item';
+import { Reservation } from './reservation';
 
-export class Room{
-    constructor(private number : number, private reservation: reservation, private items: Item[]){
-
-    }
+export interface Room {
+  number: number;
+  reservation: Reservation;
+  items: Item[];
 }
