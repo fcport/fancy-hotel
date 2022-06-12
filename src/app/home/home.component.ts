@@ -16,4 +16,8 @@ export class HomeComponent implements OnInit {
     this.router.navigate(['/reservations']);
   }
 
+  addReservations(){
+    this.router.navigate(['/add_reservation']);
+
+  }
 }
