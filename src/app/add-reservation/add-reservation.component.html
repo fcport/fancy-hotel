@@ -10,34 +10,7 @@
       <mat-date-range-picker #picker></mat-date-range-picker>
       <mat-error>Date Range is mandatory</mat-error>
     </mat-form-field>
-    <!-- 
-    <mat-form-field appearance="fill">
-     
-    
-       
-     
-      <mat-hint>MM/DD/YYYY – MM/DD/YYYY</mat-hint>
-      <mat-datepicker-toggle
-        matSuffix
-        (focus)="picker.open()"
-      ></mat-datepicker-toggle>
-      <mat-date-range-picker #picker></mat-date-range-picker>
-      <mat-error
-        *ngIf="
-          addReservationForm.controls['dateFrom'].hasError(
-            'matStartDateInvalid'
-          )
-        "
-        >Invalid start date</mat-error
-      >
-      <mat-error
-        *ngIf="
-          addReservationForm.controls['dateTo'].hasError('matEndDateInvalid')
-        "
-        >Invalid end date</mat-error
-      >
-    </mat-form-field> -->
-
+   
     <mat-form-field color="accent">
       <mat-label>Price</mat-label>
       <input matInput type="number" formControlName="price" />
@@ -46,9 +19,11 @@
     <button
       mat-raised-button
       type="submit"
+      color="primary"
       [disabled]="!this.addReservationForm.valid"
     >
-      Basic
+      Confirm
     </button>
+    
   </div>
 </form>

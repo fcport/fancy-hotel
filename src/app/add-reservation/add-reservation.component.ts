@@ -13,15 +13,10 @@ import { MatDatepicker } from '@angular/material/datepicker';
   styleUrls: ['./add-reservation.component.css'],
 })
 export class AddReservationComponent implements OnInit {
-  // addReservationForm: FormGroup = this.formBuilder.group({
-  //   dateFrom: new FormControl<Date | null>(new Date()),
-  //   dateTo: new FormControl<Date | null>(new Date()),
-  //   price: ['', Validators.required],
-  // });
   addReservationForm: FormGroup = new FormGroup({
-    dateFrom: new FormControl<Date | null>(new Date()),
-    dateTo: new FormControl<Date | null>(new Date()),
-    price: new FormControl<number>(0),
+    dateFrom: new FormControl<Date | null>(new Date(), Validators.required),
+    dateTo: new FormControl<Date | null>(new Date(), ),
+    price: new FormControl<number | null>(null, Validators.required),
   });
 
 
@@ -33,19 +28,11 @@ export class AddReservationComponent implements OnInit {
   @ViewChild('picker') picker!: MatDatepicker<Date>;
 
   constructor(private formBuilder: FormBuilder) {
-    // this.addReservationForm = formBuilder.group({
-    //   dateFrom: new FormControl<Date | null>(new Date()),
-    //   dateTo: new FormControl<Date | null>(new Date()),
-    //   price: ['', Validators.required],
-    // });
+  
   }
-
-  //check this out https://material.angular.io/components/datepicker/overview
-
   ngOnInit(): void {}
 
   addReservation() {
-    this.picker.open();
     console.log(this.addReservationForm.value);
   }
 }
