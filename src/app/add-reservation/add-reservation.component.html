@@ -10,20 +10,58 @@
       <mat-date-range-picker #picker></mat-date-range-picker>
       <mat-error>Date Range is mandatory</mat-error>
     </mat-form-field>
-   
-    <mat-form-field color="accent">
-      <mat-label>Price</mat-label>
+
+    <mat-form-field color="accent" appearance="fill">
+      <mat-label>Prezzo</mat-label>
       <input matInput type="number" formControlName="price" />
     </mat-form-field>
+    <div formArrayName="clients">
+      <h4>Clienti</h4>
+      <div *ngFor="let client of getClientsControls(); let i = index">
+        <div [formGroupName]="i">
+          <mat-form-field color="primary" appearance="fill">
+            <mat-label>Nome</mat-label>
+            <input matInput id="{{ 'name_+ i' }}" formControlName="name"
+          /></mat-form-field>
+          <mat-form-field color="primary" appearance="fill">
+            <mat-label>Cognome</mat-label>
+            <input matInput id="{{ 'surname_+ i' }}" formControlName="surname"
+          /></mat-form-field>
+          <mat-form-field color="primary" appearance="fill">
+            <mat-label>E-Mail</mat-label>
+            <input
+              matInput
+              type="email"
+              id="{{ 'email_+ i' }}"
+              formControlName="email" /></mat-form-field
+          ><mat-form-field color="primary" appearance="fill">
+            <mat-label>Eta'</mat-label>
+            <input
+              matInput
+              type="number"
+              id="{{ 'age_+ i' }}"
+              formControlName="age"
+          /></mat-form-field>
+        </div>
+      </div>
+      <button
+        mat-raised-button
+        type="button"
+        color="primary"
+        (click)="addClient()"
+      >
+        Add
+      </button>
+    </div>
 
     <button
       mat-raised-button
-      type="submit"
       color="primary"
-      [disabled]="!this.addReservationForm.valid"
+      type="submit"
+      [disabled]="!addReservationForm.valid"
+      (click)="addReservation()"
     >
-      Confirm
+      Registra Prenotazione
     </button>
-    
   </div>
 </form>
