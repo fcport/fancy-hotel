@@ -7,6 +7,7 @@ import { MatNativeDateModule } from '@angular/material/core';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatIconModule } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
+import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatSliderModule } from '@angular/material/slider';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AddClientComponent } from './add-client/add-client.component';
@@ -25,16 +26,17 @@ import { ReservationsComponent } from './reservations/reservations.component';
     AddClientComponent,
   ],
   imports: [
-    BrowserModule,
-    AppRoutingModule,
-    BrowserAnimationsModule,
     MatSliderModule,
     MatInputModule,
     MatButtonModule,
     MatIconModule,
     MatDatepickerModule,
-    ReactiveFormsModule,
+    MatSidenavModule,
     MatNativeDateModule,
+    BrowserModule,
+    AppRoutingModule,
+    BrowserAnimationsModule,
+    ReactiveFormsModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

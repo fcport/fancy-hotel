@@ -1,20 +1,35 @@
-<div>
-  <h1 class="main-title">Hotel de la fancy</h1>
-  <div
-    class="d-sm-flex flex-column justify-content-center col"
-    style="text-align: center"
-  >
-    <div>
-      <button mat-raised-button color="primary" (click)="loadReservations()">
-        Prenotazioni (temporaneo)
-      </button>
+<mat-drawer-container class="example-container" autosize>
+  <div>
+    <h1 class="main-title">Hotel de la fancy</h1>
+    <div
+      class="d-sm-flex flex-column justify-content-center col"
+      style="text-align: center"
+    >
+      <div>
+        <button mat-raised-button color="primary" (click)="loadReservations()">
+          Prenotazioni (temporaneo)
+        </button>
+      </div>
+      <div>
+
+        <a href="#" [routerLink]="['/add_reservation']" (click)="drawer.toggle()">
+          Aggiungi prenotazione
+          <!-- <button mat-raised-button color="primary" >
+            Aggiungi prenotazione
+          </button> -->
+        </a>
+      </div>
+      <div>
+        <button mat-raised-button color="primary">Check-out camera</button>
+      </div>
     </div>
-    <div>
-      <button mat-raised-button color="primary" (click)="addReservations()">Aggiungi prenotazione</button>
-    </div>
-    <div>
-      <button mat-raised-button color="primary">Check-out camera</button>
-    </div>
-    <router-outlet></router-outlet>
   </div>
-</div>
+
+  <mat-drawer #drawer mode="side">
+    <router-outlet></router-outlet>
+  </mat-drawer>
+
+</mat-drawer-container>
+
+
+<!-- showFiller = false;-->

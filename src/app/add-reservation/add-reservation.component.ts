@@ -7,6 +7,7 @@ import {
   FormGroup,
   Validators,
 } from '@angular/forms';
+import { MAT_DATE_LOCALE } from '@angular/material/core';
 import { MatDatepicker } from '@angular/material/datepicker';
 
 @Component({
@@ -23,8 +24,18 @@ export class AddReservationComponent implements OnInit {
     this.addReservationForm = formBuilder.group({
       dateFrom: new FormControl<Date | null>(new Date(), Validators.required),
       dateTo: new FormControl<Date | null>(new Date()),
-      price: new FormControl<number | null>(null, Validators.required),
-      clients: new FormArray([]),
+      price: new FormControl<number | null>(null, [Validators.required]),
+      clients: new FormArray([
+        this.formBuilder.group({
+          name: new FormControl<string | null>(null, [Validators.required]),
+          surname: new FormControl<string | null>(null, [Validators.required]),
+          email: new FormControl<string | null>(null, [
+            Validators.required,
+            Validators.email,
+          ]),
+          age: new FormControl<number | null>(null, [Validators.required]),
+        }),
+      ]),
     });
   }
   ngOnInit(): void {}
@@ -40,12 +51,16 @@ export class AddReservationComponent implements OnInit {
         Validators.required,
         Validators.email,
       ]),
-      age: new FormControl<number>(0, [Validators.required]),
+      age: new FormControl<number | null>(null, [Validators.required]),
     });
     (<FormArray>this.addReservationForm.get('clients')).push(clientInfo);
   }
 
   getClientsControls() {
     return (<FormArray>this.addReservationForm.get('clients')).controls;
+  }
+
+  deleteAt(index: number) {
+    (<FormArray>this.addReservationForm.get('clients')).removeAt(index);
   }
 }
