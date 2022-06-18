@@ -11,7 +11,7 @@ import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatSliderModule } from '@angular/material/slider';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AddClientComponent } from './add-client/add-client.component';
-import { AddReservationComponent } from './add-reservation/add-reservation.component';
+import { AddReservationComponent } from './reservations/add-reservation/add-reservation.component';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home.component';
