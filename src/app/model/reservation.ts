@@ -6,4 +6,5 @@ export interface Reservation {
   dateTo: Date;
   clients: Client[];
   price: number;
+  treatment: 'BB' | 'HP' | 'FP';
 }

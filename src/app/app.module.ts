@@ -16,6 +16,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home.component';
 import { ReservationsComponent } from './reservations/reservations.component';
+import { MatRadioModule } from '@angular/material/radio';
 
 @NgModule({
   declarations: [
@@ -33,6 +34,7 @@ import { ReservationsComponent } from './reservations/reservations.component';
     MatDatepickerModule,
     MatSidenavModule,
     MatNativeDateModule,
+    MatRadioModule,
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,

@@ -25,6 +25,9 @@ export class AddReservationComponent implements OnInit {
       dateFrom: new FormControl<Date | null>(new Date(), Validators.required),
       dateTo: new FormControl<Date | null>(new Date()),
       price: new FormControl<number | null>(null, [Validators.required]),
+      treatment: new FormControl<'BB' | 'HP' | 'FP'>('BB', [
+        Validators.required,
+      ]),
       clients: new FormArray([
         this.formBuilder.group({
           name: new FormControl<string | null>(null, [Validators.required]),

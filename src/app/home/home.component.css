@@ -3,3 +3,9 @@
     text-align: center;
     font-size: 13em;
 }
+.home-container{
+    height: 100vh;
+}
+.left-panel{
+    height: 100vh;
+}

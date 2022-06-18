@@ -1,5 +1,7 @@
+import { TemplatePortal } from '@angular/cdk/portal';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-home',
@@ -8,16 +10,14 @@ import { Router } from '@angular/router';
 })
 export class HomeComponent implements OnInit {
 
-  constructor(private router : Router) { }
 
-  ngOnInit(): void {
-  }
-  loadReservations(){
+  constructor(private router: Router) {}
+
+  ngOnInit(): void {}
+
+  loadReservations() {
     this.router.navigate(['/reservations']);
   }
 
-  // addReservations(){
-  //   this.router.navigate(['/add_reservation']);
-
-  // }
+  addReservation() {}
 }
