@@ -7,16 +7,17 @@ import { MatNativeDateModule } from '@angular/material/core';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatIconModule } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
+import { MatRadioModule } from '@angular/material/radio';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatSliderModule } from '@angular/material/slider';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AddClientComponent } from './add-client/add-client.component';
-import { AddReservationComponent } from './reservations/add-reservation/add-reservation.component';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home.component';
+import { AddReservationComponent } from './reservations/add-reservation/add-reservation.component';
 import { ReservationsComponent } from './reservations/reservations.component';
-import { MatRadioModule } from '@angular/material/radio';
+import { MatTableModule } from '@angular/material/table';
 
 @NgModule({
   declarations: [
@@ -35,6 +36,7 @@ import { MatRadioModule } from '@angular/material/radio';
     MatSidenavModule,
     MatNativeDateModule,
     MatRadioModule,
+    MatTableModule,
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
