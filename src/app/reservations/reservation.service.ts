@@ -7,7 +7,6 @@ export class ReservationService {
   reservations: Reservation[] = [
     {
       id: '1',
-      assignedRoom: 101,
       dateFrom: new Date(),
       dateTo: new Date(),
       clients: [
@@ -26,10 +25,13 @@ export class ReservationService {
       ],
       price: 245,
       treatment: 'BB',
+      room: {
+        items: [],
+        number: 101
+      }
     },
     {
       id: '2',
-      assignedRoom: 101,
       dateFrom: new Date('06/16/2022'),
       dateTo: new Date(),
       clients: [
@@ -54,10 +56,13 @@ export class ReservationService {
       ],
       price: 250,
       treatment: 'FP',
+      room: {
+        items: [],
+        number: 102
+      }
     },
     {
       id: '3',
-      assignedRoom: 103,
       dateFrom: new Date('06/17/2022'),
       dateTo: new Date('06/25/2022'),
       clients: [
@@ -70,6 +75,10 @@ export class ReservationService {
       ],
       price: 33,
       treatment: 'HP',
+      room: {
+        items: [],
+        number: 103
+      }
     },
   ];
 
