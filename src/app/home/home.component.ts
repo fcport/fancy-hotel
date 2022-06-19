@@ -1,7 +1,8 @@
-import { TemplatePortal } from '@angular/cdk/portal';
 import { Component, OnInit } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
-import { Observable } from 'rxjs';
+import { ReservationService } from '../reservations/reservation.service';
+import { SelectReservationDialogComponent } from '../reservations/select-reservation-dialog/select-reservation-dialog.component';
 
 @Component({
   selector: 'app-home',
@@ -11,7 +12,7 @@ import { Observable } from 'rxjs';
 export class HomeComponent implements OnInit {
 
 
-  constructor(private router: Router) {}
+  constructor(private router: Router, private dialog: MatDialog, private reservationService : ReservationService) {}
 
   ngOnInit(): void {}
 
@@ -20,4 +21,12 @@ export class HomeComponent implements OnInit {
   }
 
   addReservation() {}
+
+  openDialog() {
+    const dialogRef = this.dialog.open(SelectReservationDialogComponent, {});
+
+    dialogRef.afterClosed().subscribe((res) => {
+      this.reservationService.setSelectedReservation(res);
+    });
+  }
 }

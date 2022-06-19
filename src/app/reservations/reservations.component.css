@@ -1,0 +1,16 @@
+.mat-row .mat-cell {
+  border-bottom: 1px solid transparent;
+  border-top: 1px solid transparent;
+  cursor: pointer;
+  transition: 1s ease-out;
+  
+}
+
+.mat-row:hover .mat-cell {
+  border-color: currentColor;
+  background-color: #7b1fa264;
+}
+
+.selected-row {
+  background-color: #7b1fa264;
+}

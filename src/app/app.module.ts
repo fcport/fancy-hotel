@@ -18,6 +18,8 @@ import { HomeComponent } from './home/home.component';
 import { AddReservationComponent } from './reservations/add-reservation/add-reservation.component';
 import { ReservationsComponent } from './reservations/reservations.component';
 import { MatTableModule } from '@angular/material/table';
+import { MatDialogModule } from '@angular/material/dialog';
+import { SelectReservationDialogComponent } from './reservations/select-reservation-dialog/select-reservation-dialog.component';
 
 @NgModule({
   declarations: [
@@ -26,8 +28,10 @@ import { MatTableModule } from '@angular/material/table';
     ReservationsComponent,
     AddReservationComponent,
     AddClientComponent,
+    SelectReservationDialogComponent,
   ],
   imports: [
+    MatDialogModule,
     MatSliderModule,
     MatInputModule,
     MatButtonModule,

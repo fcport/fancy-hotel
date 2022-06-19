@@ -1,11 +1,13 @@
 import { Injectable } from '@angular/core';
+import { Subject } from 'rxjs';
 import { Reservation } from '../model/reservation';
 
 @Injectable({ providedIn: 'root' })
 export class ReservationService {
   reservations: Reservation[] = [
     {
-      id: 'TESTTESTTEST',
+      id: '1',
+      assignedRoom: 101,
       dateFrom: new Date(),
       dateTo: new Date(),
       clients: [
@@ -26,7 +28,8 @@ export class ReservationService {
       treatment: 'BB',
     },
     {
-      id: 'TESTTESTTEST',
+      id: '2',
+      assignedRoom: 101,
       dateFrom: new Date('06/16/2022'),
       dateTo: new Date(),
       clients: [
@@ -53,7 +56,8 @@ export class ReservationService {
       treatment: 'FP',
     },
     {
-      id: 'TESTTESTTEST',
+      id: '3',
+      assignedRoom: 103,
       dateFrom: new Date('06/17/2022'),
       dateTo: new Date('06/25/2022'),
       clients: [
@@ -69,7 +73,13 @@ export class ReservationService {
     },
   ];
 
-  getReservations(){
-    return this.reservations
+  selectedReservation: Subject<Reservation> = new Subject();
+
+  getReservations() {
+    return this.reservations;
+  }
+
+  setSelectedReservation(reservation: Reservation) {
+    this.selectedReservation.next(reservation);
   }
 }
