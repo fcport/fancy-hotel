@@ -27,8 +27,9 @@ export class ReservationService {
       treatment: 'BB',
       room: {
         items: [],
-        number: 101
-      }
+        number: 101,
+      },
+      checkedIn: true,
     },
     {
       id: '2',
@@ -58,8 +59,9 @@ export class ReservationService {
       treatment: 'FP',
       room: {
         items: [],
-        number: 102
-      }
+        number: 102,
+      },
+      checkedIn: true,
     },
     {
       id: '3',
@@ -77,8 +79,9 @@ export class ReservationService {
       treatment: 'HP',
       room: {
         items: [],
-        number: 103
-      }
+        number: 103,
+      },
+      checkedIn: true,
     },
   ];
 

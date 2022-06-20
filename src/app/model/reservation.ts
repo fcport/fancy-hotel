@@ -9,4 +9,5 @@ export interface Reservation {
   price: number;
   treatment: 'BB' | 'HP' | 'FP';
   room: Room;
+  checkedIn: boolean;
 }
