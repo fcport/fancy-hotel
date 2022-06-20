@@ -1,7 +1,7 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
-import { Observable, Subscription } from 'rxjs';
+import { Subscription } from 'rxjs';
 import { Reservation } from '../model/reservation';
 import { ReservationService } from '../reservations/reservation.service';
 import { SelectReservationDialogComponent } from '../reservations/select-reservation-dialog/select-reservation-dialog.component';
@@ -30,8 +30,6 @@ export class HomeComponent implements OnInit, OnDestroy {
     this.selectedReservationSub =
       this.reservationService.selectedReservation.subscribe((res) => {
         this.selectedReservation = res;
-        console.log(res);
-        console.log(this.selectedReservation?.room);
       });
   }
 
@@ -42,18 +40,30 @@ export class HomeComponent implements OnInit, OnDestroy {
   addReservation() {}
 
   openDialogSelezionaCamera() {
-    const dialogRef = this.dialog.open(SelectReservationDialogComponent, {});
+    const dialogRef = this.dialog.open(SelectReservationDialogComponent, {
+      data: {
+        filter: null,
+        out: null,
+      },
+    });
 
     this.selectedReservationSub = dialogRef.afterClosed().subscribe((res) => {
-      this.reservationService.setSelectedReservation(res);
+      if (!!res) this.reservationService.setSelectedReservation(res.out);
     });
   }
 
   openDialogCheckInCamera() {
-    const dialogRef = this.dialog.open(SelectReservationDialogComponent, {});
+    const dialogRef = this.dialog.open(SelectReservationDialogComponent, {
+      data: {
+        filter: (res: Reservation) => {
+          return res.checkedIn === false;
+        },
+        out: null,
+      },
+    });
 
     dialogRef.afterClosed().subscribe((res) => {
-      this.reservationService.checkInReservation(res);
+      if (!!res) this.reservationService.checkInReservation(res.out);
     });
   }
 }

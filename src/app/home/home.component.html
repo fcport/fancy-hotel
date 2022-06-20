@@ -3,7 +3,7 @@
 : "No room assigned" -->
 <div class="home-container">
   <mat-drawer-container class="home-container" autosize [hasBackdrop]="true">
-    <div>
+    <div style="text-align: center">
       <h1 class="main-title">Hotel de la fancy</h1>
       <h3 *ngIf="!this.selectedReservation; else reservationInfo">
         Select a reservation!
@@ -15,16 +15,13 @@
             selectedReservation?.id +
               " | " +
               (selectedReservation !== null && selectedReservation.room !== null
-                ? "romm assigned " + selectedReservation?.room?.number
+                ? "room assigned " + selectedReservation?.room?.number
                 : "room NOT assigned")
           }}
         </h3>
       </ng-template>
 
-      <div
-        class="d-sm-flex flex-column justify-content-center col"
-        style="text-align: center"
-      >
+      <div class="d-sm-flex flex-column justify-content-center col">
         <div>
           <button
             mat-raised-button

@@ -1,7 +1,7 @@
 <h1 mat-dialog-title>Select Reservation</h1>
 
 <div mat-dialog-content>
-  <app-reservations (confirmedReservation)="onConfirmSelectReservation($event)"></app-reservations>
+  <app-reservations (confirmedReservation)="onConfirmSelectReservation($event)" [filter]="data.filter"></app-reservations>
 </div>
 <div mat-dialog-actions>
   <button mat-flat-button color="primary" (click)="cancel()">Cancel</button>

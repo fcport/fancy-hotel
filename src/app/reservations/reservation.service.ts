@@ -26,7 +26,7 @@ export class ReservationService {
       price: 245,
       treatment: 'BB',
       room: null,
-      checkedIn: true,
+      checkedIn: false,
       checkedOut: false,
     },
     {
