@@ -1,7 +1,26 @@
+<!-- selectedReservation?.id + " | " + (selectedReservation && selectedReservation?.room)
+? (selectedReservation?.room)!.number
+: "No room assigned" -->
 <div class="home-container">
   <mat-drawer-container class="home-container" autosize [hasBackdrop]="true">
     <div>
       <h1 class="main-title">Hotel de la fancy</h1>
+      <h3 *ngIf="!this.selectedReservation; else reservationInfo">
+        Select a reservation!
+      </h3>
+      <ng-template #reservationInfo>
+        <h3>
+          Selected Reservation:
+          {{
+            selectedReservation?.id +
+              " | " +
+              (selectedReservation !== null && selectedReservation.room !== null
+                ? "romm assigned " + selectedReservation?.room?.number
+                : "room NOT assigned")
+          }}
+        </h3>
+      </ng-template>
+
       <div
         class="d-sm-flex flex-column justify-content-center col"
         style="text-align: center"
@@ -25,12 +44,32 @@
           </button>
         </div>
         <div>
-          <button mat-raised-button color="primary" (click)="openDialog()">Check-out camera</button>
+          <button
+            mat-raised-button
+            color="primary"
+            (click)="openDialogSelezionaCamera()"
+          >
+            Check-out camera
+          </button>
+        </div>
+        <div>
+          <button
+            mat-raised-button
+            color="primary"
+            (click)="openDialogCheckInCamera()"
+          >
+            Check In Camera
+          </button>
         </div>
       </div>
     </div>
 
-    <mat-drawer #drawerAddReservation mode="side" class="left-panel">
+    <mat-drawer
+      #drawerAddReservation
+      mode="side"
+      class="left-panel"
+      mode="push"
+    >
       <h2>Add reservation</h2>
       <app-add-reservation></app-add-reservation>
     </mat-drawer>

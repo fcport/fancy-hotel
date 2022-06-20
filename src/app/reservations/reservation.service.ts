@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Subject } from 'rxjs';
+import { BehaviorSubject, Subject } from 'rxjs';
 import { Reservation } from '../model/reservation';
 
 @Injectable({ providedIn: 'root' })
@@ -25,11 +25,9 @@ export class ReservationService {
       ],
       price: 245,
       treatment: 'BB',
-      room: {
-        items: [],
-        number: 101,
-      },
+      room: null,
       checkedIn: true,
+      checkedOut: false,
     },
     {
       id: '2',
@@ -57,11 +55,9 @@ export class ReservationService {
       ],
       price: 250,
       treatment: 'FP',
-      room: {
-        items: [],
-        number: 102,
-      },
+      room: null,
       checkedIn: true,
+      checkedOut: false,
     },
     {
       id: '3',
@@ -77,15 +73,14 @@ export class ReservationService {
       ],
       price: 33,
       treatment: 'HP',
-      room: {
-        items: [],
-        number: 103,
-      },
+      room: null,
       checkedIn: true,
+      checkedOut: false,
     },
   ];
 
-  selectedReservation: Subject<Reservation> = new Subject();
+  selectedReservation: BehaviorSubject<Reservation | null> =
+    new BehaviorSubject<Reservation | null>(null);
 
   getReservations() {
     return this.reservations;
@@ -93,5 +88,10 @@ export class ReservationService {
 
   setSelectedReservation(reservation: Reservation) {
     this.selectedReservation.next(reservation);
+  }
+
+  checkInReservation(reservation: Reservation) {
+    if (!!this.reservations.find((res) => res === reservation))
+      this.reservations.find((res) => res === reservation)!.checkedIn = true;
   }
 }

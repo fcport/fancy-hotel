@@ -8,6 +8,7 @@ export interface Reservation {
   clients: Client[];
   price: number;
   treatment: 'BB' | 'HP' | 'FP';
-  room: Room;
+  room: Room | null;
   checkedIn: boolean;
+  checkedOut: boolean;
 }
