@@ -79,7 +79,7 @@ export class ReservationService {
     },
   ];
 
-  selectedReservation: BehaviorSubject<Reservation | null> =
+  private selectedReservation: BehaviorSubject<Reservation | null> =
     new BehaviorSubject<Reservation | null>(null);
 
   getReservations() {
@@ -93,5 +93,9 @@ export class ReservationService {
   checkInReservation(reservation: Reservation) {
     if (!!this.reservations.find((res) => res === reservation))
       this.reservations.find((res) => res === reservation)!.checkedIn = true;
+  }
+
+  getSelectedReservation() {
+    return this.selectedReservation.asObservable();
   }
 }

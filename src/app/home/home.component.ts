@@ -28,7 +28,7 @@ export class HomeComponent implements OnInit, OnDestroy {
 
   ngOnInit(): void {
     this.selectedReservationSub =
-      this.reservationService.selectedReservation.subscribe((res) => {
+      this.reservationService.getSelectedReservation().subscribe((res) => {
         this.selectedReservation = res;
       });
   }
