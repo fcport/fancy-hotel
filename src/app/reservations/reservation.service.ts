@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { BehaviorSubject, Subject } from 'rxjs';
 import { Reservation } from '../model/reservation';
 import { Room } from '../model/room';
+import { RoomService } from '../room/room.service';
 
 @Injectable({ providedIn: 'root' })
 export class ReservationService {
@@ -80,6 +81,8 @@ export class ReservationService {
     },
   ];
 
+  constructor(private roomService: RoomService) {}
+
   private selectedReservation: BehaviorSubject<Reservation | null> =
     new BehaviorSubject<Reservation | null>(null);
 
@@ -94,16 +97,21 @@ export class ReservationService {
   checkInReservation(reservation: Reservation) {
     if (!!this.reservations.find((res) => res === reservation))
       this.reservations.find((res) => res === reservation)!.checkedIn = true;
+
+    this.assignRoom(reservation);
   }
 
   getSelectedReservation() {
     return this.selectedReservation.asObservable();
   }
 
-  assignRoom(reservation: Reservation, room: Room){
+  assignRoom(reservation: Reservation) {
+    const room = this.roomService.findFreeRoom(this.reservations);
+    if(!room) {
+      console.error('No free room'); //TODO: gestire errore tramite subject di errore
+    }else{
+      this.reservations.find((res) => res === reservation)!.room = room
+    }
 
-  }
-
-  getFreeRoom(){
   }
 }
