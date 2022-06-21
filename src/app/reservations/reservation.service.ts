@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, Subject } from 'rxjs';
 import { Reservation } from '../model/reservation';
+import { Room } from '../model/room';
 
 @Injectable({ providedIn: 'root' })
 export class ReservationService {
@@ -56,7 +57,7 @@ export class ReservationService {
       price: 250,
       treatment: 'FP',
       room: null,
-      checkedIn: true,
+      checkedIn: false,
       checkedOut: false,
     },
     {
@@ -74,7 +75,7 @@ export class ReservationService {
       price: 33,
       treatment: 'HP',
       room: null,
-      checkedIn: true,
+      checkedIn: false,
       checkedOut: false,
     },
   ];
@@ -97,5 +98,12 @@ export class ReservationService {
 
   getSelectedReservation() {
     return this.selectedReservation.asObservable();
+  }
+
+  assignRoom(reservation: Reservation, room: Room){
+
+  }
+
+  getFreeRoom(){
   }
 }

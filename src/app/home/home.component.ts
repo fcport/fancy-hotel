@@ -42,7 +42,7 @@ export class HomeComponent implements OnInit, OnDestroy {
   openDialogSelezionaCamera() {
     const dialogRef = this.dialog.open(SelectReservationDialogComponent, {
       data: {
-        filter: null,
+        filter: (res: Reservation) => {return res.checkedOut === false && res.checkedIn === true},
         out: null,
       },
     });
