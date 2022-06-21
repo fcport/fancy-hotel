@@ -39,7 +39,7 @@ export class HomeComponent implements OnInit, OnDestroy {
 
   addReservation() {}
 
-  openDialogSelezionaCamera() {
+  openDialogCheckOutCamera() {
     const dialogRef = this.dialog.open(SelectReservationDialogComponent, {
       data: {
         filter: (res: Reservation) => {return res.checkedOut === false && res.checkedIn === true},
@@ -64,6 +64,19 @@ export class HomeComponent implements OnInit, OnDestroy {
 
     dialogRef.afterClosed().subscribe((res) => {
       if (!!res) this.reservationService.checkInReservation(res.out);
+    });
+  }
+
+  openDialogSelectReservation(){
+    const dialogRef = this.dialog.open(SelectReservationDialogComponent, {
+      data: {
+        filter: null,
+        out: null,
+      },
+    });
+
+    this.selectedReservationSub = dialogRef.afterClosed().subscribe((res) => {
+      if (!!res) this.reservationService.setSelectedReservation(res.out);
     });
   }
 }
