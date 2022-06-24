@@ -100,17 +100,21 @@ export class ReservationService {
     this.assignRoom(reservation);
   }
 
+  checkOutReservation(reservation: Reservation) {
+    if (!!this.reservations.find((res) => res === reservation))
+      this.reservations.find((res) => res === reservation)!.checkedOut = true;
+  }
+
   getSelectedReservation() {
     return this.selectedReservation.asObservable();
   }
 
   assignRoom(reservation: Reservation) {
     const room = this.roomService.findFreeRoom(this.reservations);
-    if(!room) {
+    if (!room) {
       console.error('No free room'); //TODO: gestire errore tramite subject di errore
-    }else{
-      this.reservations.find((res) => res === reservation)!.room = room
+    } else {
+      this.reservations.find((res) => res === reservation)!.room = room;
     }
-
   }
 }

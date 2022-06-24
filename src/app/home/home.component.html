@@ -37,13 +37,19 @@
             Aggiungi prenotazione
           </button>
         </div>
-        <div *ngIf="!!selectedReservation; else selectReservation">
+
+        <div>
+          <button
+            mat-raised-button
+            color="primary"
+            (click)="openDialogSelectReservation()"
+          >
+            Select Reservation
+          </button>
+        </div>
+        <div *ngIf="!!selectedReservation">
           <div *ngIf="!selectedReservation.checkedIn; else showCheckOut">
-            <button
-              mat-raised-button
-              color="primary"
-              (click)="checkInCamera()"
-            >
+            <button mat-raised-button color="primary" (click)="checkInCamera()">
               Check In Camera
             </button>
           </div>
@@ -60,17 +66,6 @@
             </div>
           </ng-template>
         </div>
-        <ng-template #selectReservation>
-          <div>
-            <button
-              mat-raised-button
-              color="primary"
-              (click)="openDialogSelectReservation()"
-            >
-              Select Reservation
-            </button>
-          </div>
-        </ng-template>
       </div>
     </div>
 
