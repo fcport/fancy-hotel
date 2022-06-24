@@ -17,6 +17,7 @@ export class ReservationsComponent implements OnInit {
     'treatment',
     'clients',
     'checkedIn',
+    'checkedOut',
   ];
   selectedReservation: Reservation | null = null;
 

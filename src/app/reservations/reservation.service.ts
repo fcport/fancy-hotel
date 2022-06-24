@@ -101,8 +101,13 @@ export class ReservationService {
   }
 
   checkOutReservation(reservation: Reservation) {
-    if (!!this.reservations.find((res) => res === reservation))
-      this.reservations.find((res) => res === reservation)!.checkedOut = true;
+    const res = this.reservations.find((res) => res === reservation);
+    if (!!res) {
+      res.checkedOut = true;
+      res.room = null;
+    }
+
+    this.selectedReservation.next(null);
   }
 
   getSelectedReservation() {
