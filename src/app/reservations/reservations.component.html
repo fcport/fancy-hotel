@@ -5,6 +5,15 @@
       {{ reservation.dateFrom | date }}
     </td>
   </ng-container>
+  <ng-container matColumnDef="room">
+    <th mat-header-cell *matHeaderCellDef>Room N.</th>
+    <td mat-cell *matCellDef="let reservation">
+      <div *ngIf="!!reservation.room && !!reservation.room.number; else noRoom">
+        {{ reservation.room.number }}
+      </div>
+      <ng-template #noRoom> - </ng-template>
+    </td>
+  </ng-container>
 
   <ng-container matColumnDef="dateTo">
     <th mat-header-cell *matHeaderCellDef>To Date</th>

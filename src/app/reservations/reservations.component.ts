@@ -9,7 +9,15 @@ import { ReservationService } from './reservation.service';
 })
 export class ReservationsComponent implements OnInit {
   reservations!: Reservation[];
-  displayedColumns = ['dateFrom', 'dateTo', 'price', 'treatment', 'clients', 'checkedIn'];
+  displayedColumns = [
+    'room',
+    'dateFrom',
+    'dateTo',
+    'price',
+    'treatment',
+    'clients',
+    'checkedIn',
+  ];
   selectedReservation: Reservation | null = null;
 
   @Input('filter') filter?: (res: Reservation) => boolean;
