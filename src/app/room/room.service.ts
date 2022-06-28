@@ -8,34 +8,42 @@ export class RoomService {
     {
       number: 101,
       items: [],
+      maxCapacity: 2,
     },
     {
       number: 102,
       items: [],
+      maxCapacity: 2,
     },
     {
       number: 103,
       items: [],
+      maxCapacity: 2,
     },
     {
       number: 104,
       items: [],
+      maxCapacity: 2,
     },
     {
       number: 201,
       items: [],
+      maxCapacity: 4,
     },
     {
       number: 202,
       items: [],
+      maxCapacity: 4,
     },
     {
       number: 203,
       items: [],
+      maxCapacity: 4,
     },
     {
       number: 204,
       items: [],
+      maxCapacity: 4,
     },
   ];
 
@@ -51,5 +59,9 @@ export class RoomService {
 
       return null;
     });
+  }
+
+  getRooms() {
+    return this.rooms;
   }
 }

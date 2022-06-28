@@ -5,6 +5,7 @@ import { Subscription } from 'rxjs';
 import { Reservation } from '../model/reservation';
 import { ReservationService } from '../reservations/reservation.service';
 import { SelectReservationDialogComponent } from '../reservations/select-reservation-dialog/select-reservation-dialog.component';
+import { SelectRoomDialogComponent } from '../room/select-room-dialog/select-room-dialog.component';
 
 @Component({
   selector: 'app-home',
@@ -45,7 +46,18 @@ export class HomeComponent implements OnInit, OnDestroy {
   }
 
   checkInCamera() {
-    this.reservationService.checkInReservation(this.selectedReservation!);
+    // choose room procedure
+    //this.reservationService.checkInReservation(this.selectedReservation!);
+
+    const dialogRef = this.dialog.open(SelectRoomDialogComponent, {
+      data:{
+        filter: null,
+        out: null
+      },
+      width: '40%',
+    })
+
+    let sub = dialogRef.afterClosed().subscribe(console.log)
   }
 
   openDialogSelectReservation() {

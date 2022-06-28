@@ -21,6 +21,7 @@ import { MatTableModule } from '@angular/material/table';
 import { MatDialogModule } from '@angular/material/dialog';
 import { SelectReservationDialogComponent } from './reservations/select-reservation-dialog/select-reservation-dialog.component';
 import { RoomComponent } from './room/room.component';
+import { SelectRoomDialogComponent } from './room/select-room-dialog/select-room-dialog.component';
 
 @NgModule({
   declarations: [
@@ -31,6 +32,7 @@ import { RoomComponent } from './room/room.component';
     AddClientComponent,
     SelectReservationDialogComponent,
     RoomComponent,
+    SelectRoomDialogComponent,
   ],
   imports: [
     MatDialogModule,

@@ -1,7 +1,7 @@
 import { Component, Inject, OnInit } from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { Reservation } from 'src/app/model/reservation';
-import { DialogReservationData } from 'src/app/utils/dialog-reservation-data';
+import { DialogData } from 'src/app/utils/dialog-data';
 
 @Component({
   selector: 'app-select-reservation-dialog',
@@ -11,7 +11,7 @@ import { DialogReservationData } from 'src/app/utils/dialog-reservation-data';
 export class SelectReservationDialogComponent implements OnInit {
   constructor(
     private dialogRef: MatDialogRef<SelectReservationDialogComponent>,
-    @Inject(MAT_DIALOG_DATA) public data: DialogReservationData
+    @Inject(MAT_DIALOG_DATA) public data: DialogData
   ) {}
 
   ngOnInit(): void {
