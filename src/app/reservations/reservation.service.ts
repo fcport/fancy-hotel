@@ -114,6 +114,18 @@ export class ReservationService {
     return this.selectedReservation.asObservable();
   }
 
+  getAvailableRooms() {
+    const occupiedRooms = this.reservations.map((res) => res.room);
+
+    if (!occupiedRooms) {
+      return this.roomService.getRooms();
+    }
+
+    return this.roomService.getRooms().filter((room) => {
+      return !occupiedRooms.includes(room);
+    });
+  }
+
   assignRoom(reservation: Reservation) {
     const room = this.roomService.findFreeRoom(this.reservations);
     if (!room) {

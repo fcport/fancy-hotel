@@ -4,7 +4,7 @@ import { Room } from '../model/room';
 
 @Injectable({ providedIn: 'root' })
 export class RoomService {
-  rooms: Room[] = [
+  private rooms: Room[] = [
     {
       number: 101,
       items: [],

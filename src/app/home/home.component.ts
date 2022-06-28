@@ -3,6 +3,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { Reservation } from '../model/reservation';
+import { Room } from '../model/room';
 import { ReservationService } from '../reservations/reservation.service';
 import { SelectReservationDialogComponent } from '../reservations/select-reservation-dialog/select-reservation-dialog.component';
 import { SelectRoomDialogComponent } from '../room/select-room-dialog/select-room-dialog.component';
@@ -49,21 +50,30 @@ export class HomeComponent implements OnInit, OnDestroy {
     // choose room procedure
     //this.reservationService.checkInReservation(this.selectedReservation!);
 
+    const resClients = this.selectedReservation?.clients.length || 0;
+
     const dialogRef = this.dialog.open(SelectRoomDialogComponent, {
-      data:{
-        filter: null,
-        out: null
+      data: {
+        filter: (room: Room) => {
+          return (
+            room.maxCapacity >= resClients &&
+            this.reservationService.getAvailableRooms().includes(room)
+          );
+        },
+        out: null,
       },
       width: '40%',
-    })
+    });
 
-    let sub = dialogRef.afterClosed().subscribe(console.log)
+    let sub = dialogRef.afterClosed().subscribe(console.log);
   }
 
   openDialogSelectReservation() {
     const dialogRef = this.dialog.open(SelectReservationDialogComponent, {
       data: {
-        filter: (res: Reservation) => {return !(res.checkedIn && res.checkedOut)},
+        filter: (res: Reservation) => {
+          return !(res.checkedIn && res.checkedOut);
+        },
         out: null,
       },
       width: '60%',
