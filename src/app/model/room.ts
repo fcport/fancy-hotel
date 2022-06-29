@@ -4,5 +4,5 @@ import { Reservation } from './reservation';
 export interface Room {
   number: number;
   maxCapacity: number;
-  items: Extra[];
+  extras: Extra[];
 }

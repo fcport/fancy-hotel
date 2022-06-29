@@ -7,42 +7,42 @@ export class RoomService {
   private rooms: Room[] = [
     {
       number: 101,
-      items: [],
+      extras: [],
       maxCapacity: 2,
     },
     {
       number: 102,
-      items: [],
+      extras: [],
       maxCapacity: 2,
     },
     {
       number: 103,
-      items: [],
+      extras: [],
       maxCapacity: 2,
     },
     {
       number: 104,
-      items: [],
+      extras: [],
       maxCapacity: 2,
     },
     {
       number: 201,
-      items: [],
+      extras: [],
       maxCapacity: 4,
     },
     {
       number: 202,
-      items: [],
+      extras: [],
       maxCapacity: 4,
     },
     {
       number: 203,
-      items: [],
+      extras: [],
       maxCapacity: 4,
     },
     {
       number: 204,
-      items: [],
+      extras: [],
       maxCapacity: 4,
     },
   ];
