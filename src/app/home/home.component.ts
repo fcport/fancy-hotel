@@ -16,6 +16,7 @@ import { SelectRoomDialogComponent } from '../room/select-room-dialog/select-roo
 export class HomeComponent implements OnInit, OnDestroy {
   selectedReservation: Reservation | null = null;
   selectedReservationSub!: Subscription;
+  selectedRoomSub!: Subscription;
 
   constructor(
     private router: Router,
@@ -26,6 +27,8 @@ export class HomeComponent implements OnInit, OnDestroy {
   ngOnDestroy(): void {
     if (!!this.selectedReservationSub)
       this.selectedReservationSub.unsubscribe();
+
+    if (!!this.selectedRoomSub) this.selectedRoomSub.unsubscribe();
   }
 
   ngOnInit(): void {
@@ -50,13 +53,13 @@ export class HomeComponent implements OnInit, OnDestroy {
     // choose room procedure
     //this.reservationService.checkInReservation(this.selectedReservation!);
 
-    const resClients = this.selectedReservation?.clients.length || 0;
+    const resClientsNumber = this.selectedReservation?.clients.length || 0;
 
     const dialogRef = this.dialog.open(SelectRoomDialogComponent, {
       data: {
         filter: (room: Room) => {
           return (
-            room.maxCapacity >= resClients &&
+            room.maxCapacity >= resClientsNumber &&
             this.reservationService.getAvailableRooms().includes(room)
           );
         },
@@ -65,7 +68,13 @@ export class HomeComponent implements OnInit, OnDestroy {
       width: '40%',
     });
 
-    let sub = dialogRef.afterClosed().subscribe(console.log);
+    this.selectedRoomSub = dialogRef.afterClosed().subscribe((res) => {
+      if (!!res)
+        this.reservationService.checkInReservation(
+          this.selectedReservation!,
+          res.out
+        );
+    });
   }
 
   openDialogSelectReservation() {

@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
 import { Reservation } from '../model/reservation';
+import { Room } from '../model/room';
 import { RoomService } from '../room/room.service';
 
 @Injectable({ providedIn: 'root' })
@@ -93,11 +94,20 @@ export class ReservationService {
     this.selectedReservation.next(reservation);
   }
 
-  checkInReservation(reservation: Reservation) {
-    if (!!this.reservations.find((res) => res === reservation))
-      this.reservations.find((res) => res === reservation)!.checkedIn = true;
+  checkInReservation(reservation: Reservation, room: Room) {
+    const selRes = this.reservations.find((res) => res === reservation)
+    // if (!!this.reservations.find((res) => res === reservation)){
+    //   this.reservations.find((res) => res === reservation)!.checkedIn = true;
+    //   this.reservations.find((res) => res === reservation)!.room = room;
+    // }
+    if (!!selRes){
+      selRes!.checkedIn = true;
+      selRes!.room = room;
+    }
 
-    this.assignRoom(reservation);
+    console.log(this.reservations);
+    
+     
   }
 
   checkOutReservation(reservation: Reservation) {
@@ -126,12 +136,13 @@ export class ReservationService {
     });
   }
 
-  assignRoom(reservation: Reservation) {
-    const room = this.roomService.findFreeRoom(this.reservations);
-    if (!room) {
-      console.error('No free room'); //TODO: gestire errore tramite subject di errore
-    } else {
-      this.reservations.find((res) => res === reservation)!.room = room;
-    }
-  }
+  // assignRoom(reservation: Reservation) {
+  //   const room = this.roomService.findFreeRoom(this.reservations);
+  //   if (!room) {
+  //     console.error('No free room'); //TODO: gestire errore tramite subject di errore
+  //   } else {
+  //     this.reservations.find((res) => res === reservation)!.room = room;
+  //   }
+  // }
+
 }
