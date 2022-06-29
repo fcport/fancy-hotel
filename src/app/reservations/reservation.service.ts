@@ -129,12 +129,4 @@ export class ReservationService {
     });
   }
 
-  // assignRoom(reservation: Reservation) {
-  //   const room = this.roomService.findFreeRoom(this.reservations);
-  //   if (!room) {
-  //     console.error('No free room'); //TODO: gestire errore tramite subject di errore
-  //   } else {
-  //     this.reservations.find((res) => res === reservation)!.room = room;
-  //   }
-  // }
 }
