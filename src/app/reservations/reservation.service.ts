@@ -95,19 +95,12 @@ export class ReservationService {
   }
 
   checkInReservation(reservation: Reservation, room: Room) {
-    const selRes = this.reservations.find((res) => res === reservation)
-    // if (!!this.reservations.find((res) => res === reservation)){
-    //   this.reservations.find((res) => res === reservation)!.checkedIn = true;
-    //   this.reservations.find((res) => res === reservation)!.room = room;
-    // }
-    if (!!selRes){
+    const selRes = this.reservations.find((res) => res === reservation);
+
+    if (!!selRes) {
       selRes!.checkedIn = true;
       selRes!.room = room;
     }
-
-    console.log(this.reservations);
-    
-     
   }
 
   checkOutReservation(reservation: Reservation) {
@@ -144,5 +137,4 @@ export class ReservationService {
   //     this.reservations.find((res) => res === reservation)!.room = room;
   //   }
   // }
-
 }
