@@ -25,6 +25,7 @@ import { ReservationsComponent } from './reservations/reservations.component';
 import { SelectReservationDialogComponent } from './reservations/select-reservation-dialog/select-reservation-dialog.component';
 import { RoomComponent } from './room/room.component';
 import { SelectRoomDialogComponent } from './room/select-room-dialog/select-room-dialog.component';
+import { CartComponent } from './extra/cart/cart.component';
 
 
 @NgModule({
@@ -39,6 +40,7 @@ import { SelectRoomDialogComponent } from './room/select-room-dialog/select-room
     SelectRoomDialogComponent,
     ExtraComponent,
     ExtraCardComponent,
+    CartComponent,
   ],
   imports: [
     MatDialogModule,

@@ -3,7 +3,7 @@
   <mat-card-subtitle>{{ extra.description }}</mat-card-subtitle>
   <img mat-card-image src="{{ extra.image }}" alt="{{ extra.description }}" class="extra-image" />
   <mat-card-actions class="extra-card-footer">
-    <button mat-button (click)="onAddToCart()">Add to cart</button>
+    <button mat-stroked-button (click)="onAddToCart()" color="accent">Add to cart</button>
     <span style="padding-right: 5%;">
       {{ extra.price | currency}}
     </span>

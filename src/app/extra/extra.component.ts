@@ -9,10 +9,15 @@ import { ExtraService } from './extra-service.service';
 })
 export class ExtraComponent implements OnInit {
   extras: Extra[] = [];
+  
 
   constructor(private extrasService: ExtraService) {}
 
   ngOnInit(): void {
     this.extras = this.extrasService.getExtras();
+  }
+
+  itemAddedToCart(extra: Extra){
+    this.extras.push(extra);
   }
 }

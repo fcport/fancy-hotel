@@ -1,4 +1,16 @@
 <h1>Extras</h1>
-<div class="extras-container">
-  <app-extra-card *ngFor="let extra of extras" [extra]="extra"></app-extra-card>
+
+<div class="extras-cart-container">
+  <div class="extras-items-container">
+    <app-extra-card
+      *ngFor="let extra of extras"
+      [extra]="extra"
+      class="extra-card"
+      (addToCart)="itemAddedToCart(extra)"
+    ></app-extra-card>
+  </div>
+  <div class="cart">
+    <h3>Carrelo</h3>
+    <app-cart></app-cart>
+  </div>
 </div>
